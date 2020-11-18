@@ -1,11 +1,18 @@
 [![NPM Version][10]][8]
 [![Standard Version][11]][9]
 
-Remark Loader
-=============
+Remark Loader 2
+===============
 
-Load markdown through `remark` with built-in image resolution.
+Load markdown through `remark` with built-in image resolution. Exports
+frontmatter attributes as well.
 
+> You might prefer
+> [webpack-contrib/remark-loader](https://github.com/webpack-contrib/remark-loader)
+> if you're looking for a well-maintained, simple Webpack loader. However, as of
+> this writing the latter version [does not allow you to access frontmatter
+> attributes](https://github.com/webpack-contrib/remark-loader/pull/9), hence
+> this fork.
 
 ## Usage
 
@@ -22,7 +29,7 @@ module.exports = {
         test: /\.md$/,
         use: [
           {
-            loader: 'remark-loader',
+            loader: 'remark-loader-2',
             options: {
               plugins: [
                 require('remark-kbd')
@@ -63,7 +70,7 @@ console.log(attributes) // logs "{ title: 'a clever remark' }"
 > forward options to it via `htmlLoaderOptions`:
 > ```js
 > {
->   loader: 'remark-loader',
+>   loader: 'remark-loader-2',
 >   options: {
 >     htmlLoaderOptions: {
 >       minimize: false
@@ -106,6 +113,6 @@ MIT (c) 2017
 [7]: https://github.com/cerebral/marksy
 [8]: https://www.npmjs.com/package/remark-loader
 [9]: https://github.com/conventional-changelog/standard-version
-[10]: https://img.shields.io/npm/v/remark-loader.svg
+[10]: https://img.shields.io/npm/v/remark-loader-2.svg
 [11]: https://img.shields.io/badge/release-standard%20version-brightgreen.svg
 [12]: https://mdxjs.com/
