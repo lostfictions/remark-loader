@@ -8,6 +8,9 @@ Object {
   "default": "<h1>hello world!</h1>
 <p>a fine post here</p>
 ",
+  "plaintext": "hello world!
+a fine post here
+",
 }
 `;
 
@@ -33,6 +36,9 @@ Object {
   },
   "default": "<h1>hello world!</h1>
 <p>here's my good content</p>
+",
+  "plaintext": "hello world!
+here's my good content
 ",
 }
 `;

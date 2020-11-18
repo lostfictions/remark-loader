@@ -14,10 +14,12 @@ module.exports = function (content) {
   const { htmlLoaderOptions } = options || {};
 
   let attributes;
+  let plaintext;
 
   parse(content, options)
     .then((processed) => {
       attributes = processed.attributes;
+      plaintext = processed.plaintext;
 
       const options = Object.assign({}, htmlLoaderOptions, { esModule: true });
       const context = Object.assign({}, this, { query: options });
@@ -27,7 +29,11 @@ module.exports = function (content) {
     .then((resolved) => {
       callback(
         null,
-        `${resolved}\n;export const attributes = ${JSON.stringify(attributes)};`
+        [
+          resolved,
+          `;export const attributes = ${JSON.stringify(attributes)};`,
+          `;export const plaintext = ${JSON.stringify(plaintext)}`,
+        ].join("\n")
       );
     })
     .catch(callback);

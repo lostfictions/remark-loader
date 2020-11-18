@@ -1,6 +1,7 @@
 const FrontMatter = require("front-matter");
 const Remark = require("remark");
 const RemarkHTML = require("remark-html");
+const RemarkPlainText = require("remark-plain-text");
 const Report = require("vfile-reporter");
 
 /**
@@ -23,14 +24,23 @@ module.exports = function (markdown, options = {}) {
       }, Remark())
       .use(RemarkHTML)
       .process(parsed.body, (err, file) => {
-        let result = {
+        const result = {
           content: file.contents,
           attributes: parsed.attributes,
         };
 
-        if (err) {
-          reject(Report(err || file));
-        } else resolve(result);
+        if (err) reject(Report(err || file));
+        else resolve(result);
       });
-  });
+  }).then(
+    (result) =>
+      new Promise((resolve, reject) => {
+        Remark()
+          .use(RemarkPlainText)
+          .process(parsed.body, (err, file) => {
+            if (err) reject(Report(err || file));
+            else resolve({ ...result, plaintext: file.contents });
+          });
+      })
+  );
 };

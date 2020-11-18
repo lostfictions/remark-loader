@@ -31,6 +31,7 @@
     "loader-utils": "^1.1.0",
     "remark": "^8.0.0",
     "remark-html": "^6.0.1",
+    "remark-plain-text": "^0.2.0",
     "vfile-reporter": "^4.0.0"
   },
   "devDependencies": {
