@@ -16,6 +16,9 @@
     "webpack",
     "loader"
   ],
+  "files": [
+    "src"
+  ],
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint .",
