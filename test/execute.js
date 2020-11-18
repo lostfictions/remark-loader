@@ -1,5 +1,5 @@
-const Module = require('module');
-const path = require('path');
+const Module = require("module");
+const path = require("path");
 
 const parentModule = module;
 
@@ -9,12 +9,10 @@ module.exports = (asset, compiler, stats) => {
 
   const source = usedFs.readFileSync(path.join(outputPath, asset)).toString();
 
-  const resource = 'test.js';
+  const resource = "test.js";
   const mod = new Module(resource, parentModule);
 
-  mod.paths = Module._nodeModulePaths(
-    path.resolve(__dirname, '../fixtures')
-  );
+  mod.paths = Module._nodeModulePaths(path.resolve(__dirname, "../fixtures"));
   mod.filename = resource;
 
   mod._compile(source, resource);
