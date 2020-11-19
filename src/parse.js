@@ -1,7 +1,7 @@
 const FrontMatter = require("front-matter");
 const Remark = require("remark");
 const RemarkHTML = require("remark-html");
-const RemarkPlainText = require("remark-plain-text");
+const StripMarkdown = require("strip-markdown");
 const Report = require("vfile-reporter");
 
 /**
@@ -36,7 +36,7 @@ module.exports = function (markdown, options = {}) {
     (result) =>
       new Promise((resolve, reject) => {
         Remark()
-          .use(RemarkPlainText)
+          .use(StripMarkdown)
           .process(parsed.body, (err, file) => {
             if (err) reject(Report(err || file));
             else resolve({ ...result, plaintext: file.contents });

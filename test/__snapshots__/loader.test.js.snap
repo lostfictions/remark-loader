@@ -9,6 +9,7 @@ Object {
 <p>a fine post here</p>
 ",
   "plaintext": "hello world!
+
 a fine post here
 ",
 }
@@ -38,6 +39,7 @@ Object {
 <p>here's my good content</p>
 ",
   "plaintext": "hello world!
+
 here's my good content
 ",
 }
